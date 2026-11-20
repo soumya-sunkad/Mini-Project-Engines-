@@ -79,15 +79,15 @@ GROUP BY s.usn, s.student_name, c.course_id, c.course_code
 HAVING total_held > 0;
 
 INSERT INTO faculty (faculty_id, faculty_name, email) VALUES
-(1, 'Prof. Pavankumar Vadavi', 'pavan.vadavi@kletech.ac.in');
+(1, 'Prof. Pavan Vadavi', 'pavan.vadavi@kletech.ac.in');
 
 INSERT INTO course (course_id, course_code, course_title, total_hours, credits) VALUES
 (101, '24BCA401', 'Database Management Systems', 52, 4);
 
 INSERT INTO student (usn, student_name, semester, section, email) VALUES
-('01FE24BCA274', 'Soumya Sunkad', 5, 'A', 'soumya.sunkad@kletech.ac.in'),
-('01FE24BCA275', 'Divya Sunkad', 5, 'A', 'divya.sunkad@kletech.ac.in'),
-('01FE24BCA276', 'Akkamma S R', 5, 'A', 'akkamma.sr@kletech.ac.in');
+('01FE24BCA274', 'Soumya Sunkad', 5, 'E', '01fe24bca274@kletech.ac.in'),
+('01FE24BCA275', 'Divya Sunkad', 5, 'E', '01fe24bca275@kletech.ac.in'),
+('01FE24BCA276', 'Akkamma S R', 5, 'E', '01fe24bca276@kletech.ac.in');
 
 INSERT INTO attendance_session (session_id, course_id, faculty_id, session_date, period_number) VALUES
 (1, 101, 1, '2026-10-01', 1),
