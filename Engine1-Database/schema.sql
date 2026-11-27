@@ -52,3 +52,36 @@ JOIN subjects sub ON sub.code = a.subject_code
 GROUP BY s.usn, s.name, s.email, sub.code, sub.name;
 
 CREATE INDEX idx_att_usn ON attendance(usn);
+-- ==========================================
+-- FACULTY TABLE
+-- ==========================================
+
+CREATE TABLE IF NOT EXISTS faculty (
+    faculty_id INT AUTO_INCREMENT PRIMARY KEY,
+    faculty_name VARCHAR(100) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    department VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+
+-- ==========================================
+-- FACULTY SUBJECT ALLOCATION
+-- ==========================================
+
+CREATE TABLE IF NOT EXISTS faculty_subject (
+    allocation_id INT AUTO_INCREMENT PRIMARY KEY,
+    faculty_id INT NOT NULL,
+    subject_code VARCHAR(20) NOT NULL,
+
+    UNIQUE KEY unique_faculty_subject
+    (faculty_id, subject_code),
+
+    FOREIGN KEY (faculty_id)
+    REFERENCES faculty(faculty_id)
+    ON DELETE CASCADE,
+
+    FOREIGN KEY (subject_code)
+    REFERENCES subjects(code)
+    ON DELETE CASCADE
+) ENGINE=InnoDB;
